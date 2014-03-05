@@ -1,4 +1,4 @@
-SOURCES=${wildcard src/*.cpp}
+SOURCES=${wildcard src/*.cpp wildcard src/figures/*.cpp}
 OBJECTS=$(SOURCES:src/%.cpp=obj/%.o)
 CFLAGS=-c -Wall -std=c++11 -Iinclude
 LDFLAGS=

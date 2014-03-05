@@ -9,7 +9,7 @@ public:
 	Color color;
 
 	Figure(Color c) : color(c) {};
-	virtual bool testHit(Ray ray, double distance) = 0;
+	virtual bool testHit(Ray ray, double &distance) = 0;
 };
 
 #endif

@@ -18,6 +18,7 @@ public:
     Color** getBitmap();
     unsigned int getWidth();
     unsigned int getHeight();
+    void render();
 };
 
 #endif

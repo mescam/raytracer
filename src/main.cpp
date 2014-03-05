@@ -21,6 +21,6 @@ int main(int argc, char** argv) {
 
     Raytracer test;
     Image* img = test.raytrace(sampleScene,camera,256,256);
-
+    img->render();
     return 0;
 }

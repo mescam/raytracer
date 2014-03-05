@@ -57,7 +57,7 @@ unsigned int Image::getHeight() {
 }
 
 void Image::render() {
-    sf::RenderWindow window(sf::VideoMode(width, height), "Raytracer Window");
+    
     sf::Image buffer;
     buffer.create(width, height, sf::Color(0, 0, 0));
     for (unsigned int i = 0; i < width; ++i) {
@@ -71,6 +71,8 @@ void Image::render() {
     sf::Texture bufferTexture;
     bufferTexture.loadFromImage(buffer);
     sf::Sprite bufferSprite(bufferTexture);
+    sf::RenderWindow window(sf::VideoMode(width, height), "Raytracer Window");
+    window.clear(sf::Color(0, 0, 0));
     window.draw(bufferSprite);
     window.display();
     std::cin.get();

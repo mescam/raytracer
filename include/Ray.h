@@ -6,12 +6,13 @@
 #include "Vectors.h"
 
 class Ray {
+public:
 	const double epsilon = 0.000001;
 	const double infinity = DBL_MAX;
 
 	Vector3 origin;
 	Vector3 direction;
-
+public:
 	Ray(Vector3 origin, Vector3 direction): origin(origin), direction(direction.getNormalized()) {
 
 	}
@@ -21,7 +22,6 @@ class Ray {
 
 	void setOrigin(Vector3 v);
 	void setDirection(Vector3 v);
-
 };
 
 #endif //_RAY_H_

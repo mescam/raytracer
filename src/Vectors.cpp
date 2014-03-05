@@ -74,3 +74,35 @@ void Vector2::setX(double x) {
 void Vector2::setY(double y) {
     this->y = y;
 }
+
+Vector2 Vector2::operator!() {
+    return Vector2(-(this->x),-(this->y));
+}
+Vector2 Vector2::operator+(const Vector2 & v) {
+    return Vector2(this->x+v.x,this->y+v.y);
+}
+Vector2 Vector2::operator-(const Vector2 & v) {
+    return Vector2(this->x-v.x,this->y-v.y);
+}
+Vector2 Vector2::operator*(const double & val) {
+    return Vector2(this->x*val,this->y*val);
+}
+Vector2 Vector2::operator/(const double & val) {
+    return Vector2(this->x/val,this->y/val);
+}
+
+double Vector2::dot(Vector2 a, Vector2 b) {
+    return (a.x*b.x + a.y*b.y);
+}
+
+double Vector2::length() {
+    return sqrt(this->lengthSq());
+}
+
+double Vector2::lengthSq() {
+    return (this->x*this->x + this->y*this->y);
+}
+
+Vector2 Vector2::getNormalized() {
+    return ((*this)/this->length());
+}

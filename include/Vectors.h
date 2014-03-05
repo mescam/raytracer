@@ -50,6 +50,20 @@ public:
 
     void setX(double x);
     void setY(double y);
+
+    Vector2 operator!();
+    Vector2 operator+(const Vector2 & v);
+    Vector2 operator-(const Vector2 & v);
+    Vector2 operator*(const double & val);
+    Vector2 operator/(const double & val);
+
+    static double dot(Vector2 a, Vector2 b);
+    //static Vector2 cross(Vector2 a, Vector2 b); ???
+
+    double length();
+    double lengthSq();
+
+    Vector2 getNormalized();
 };
 
 #endif //_VECTORS_H_

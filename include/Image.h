@@ -11,10 +11,13 @@ private:
 
 public:
     Image(unsigned int w, unsigned int h);
+    Image(Image& img);
     ~Image();
     void setPixel(unsigned int w, unsigned int h, Color c);
     Color getPixel(unsigned int w, unsigned int h);
     Color** getBitmap();
+    unsigned int getWidth();
+    unsigned int getHeight();
 };
 
 #endif

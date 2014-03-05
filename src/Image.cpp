@@ -8,6 +8,18 @@ Image::Image(unsigned int w, unsigned int h) : width(w), height(h) {
     }
 }
 
+Image::Image(Image &img) {
+    width = img.getWidth();
+    height = img.getHeight();
+    bitmap = new Color*[width];
+    for (unsigned int i = 0; i < width; ++i) {
+        bitmap[i] = new Color[height];
+        for (unsigned int j = 0; j < height; ++j) {
+            bitmap[i][j] = img.getPixel(i, j);
+        }
+    }
+}
+
 Image::~Image() {
     for (unsigned int i = 0; i < width; ++i) {
         delete[] bitmap[i];
@@ -31,4 +43,12 @@ Color Image::getPixel(unsigned int w, unsigned int h) {
 
 Color** Image::getBitmap() {
     return bitmap;
+}
+
+unsigned int Image::getWidth() {
+    return width;
+}
+
+unsigned int Image::getHeight() {
+    return height;
 }

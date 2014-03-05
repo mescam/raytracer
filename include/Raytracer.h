@@ -9,7 +9,7 @@
 class Raytracer {
 public:
     Raytracer() {}
-    Image raytrace(Scene scene, Camera* camera, int w, int h);
+    Image* raytrace(Scene scene, Camera* camera, int w, int h);
 };
 
 #endif //_RAYTRACER_H_

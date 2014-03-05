@@ -4,7 +4,7 @@
 #include "Figure.h"
 #include "Vectors.h"
 
-class Sphere : Figure {
+class Sphere : public Figure {
 public:
     Vector3 center;
     double radius;

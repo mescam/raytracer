@@ -7,8 +7,8 @@
 
 class Ray {
 public:
-	const double epsilon = 0.000001;
-	const double infinity = DBL_MAX;
+	static constexpr double epsilon = 0.000001;
+	static constexpr` double infinity = DBL_MAX;
 
 	Vector3 origin;
 	Vector3 direction;

@@ -2,6 +2,7 @@
 #define _IMAGE_H_
 
 #include "Color.h"
+#include "PngExport.h"
 
 class Image {
 private:

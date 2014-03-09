@@ -11,7 +11,7 @@
 
 int main(int argc, char** argv) {
     //let the journey begin
-    Scene sampleScene = Scene(Color(0.5f,0.5f,0.5f,1.0f));
+    Scene sampleScene = Scene(Color(1.5f,1.5f,1.5f,1.0f));
 
     sampleScene.addObject(new Sphere(Vector3(-2.5,0,0),2,Color(1.0f,0.0f,0.0f,1.0f)));
     sampleScene.addObject(new Sphere(Vector3(2.5,0,0),2,Color(0.0f,1.0f,0.0f,1.0f)));

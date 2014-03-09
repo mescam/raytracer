@@ -1,7 +1,7 @@
 SOURCES=${wildcard src/*.cpp wildcard src/figures/*.cpp}
 OBJECTS=$(SOURCES:src/%.cpp=obj/%.o)
-CFLAGS=-c -Wall -std=c++11 -Iinclude
-LDFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
+CFLAGS=-c -Wall -std=c++11 -Iinclude `libpng-config --cflags` 
+LDFLAGS=`libpng-config --ldflags` 
 EXECUTABLE=bin/raytracer
 
 all: $(EXECUTABLE)

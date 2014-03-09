@@ -1,7 +1,7 @@
 #include "Image.h"
 #include <cassert>
 #include <iostream>
-#include <SFML/Graphics.hpp>
+//#include <SFML/Graphics.hpp>
 
 
 Image::Image(unsigned int w, unsigned int h) : width(w), height(h) {
@@ -57,14 +57,16 @@ unsigned int Image::getHeight() {
 }
 
 void Image::render() {
-    
-    sf::Image buffer;
+    Image* im = new Image(128,128);
+    PngExport test = PngExport(im);
+    test.exportToFile("output.png");
+    /*sf::Image buffer;
     buffer.create(width, height, sf::Color(0, 0, 0));
     for (unsigned int i = 0; i < width; ++i) {
         for (unsigned int j = 0; j < height; ++j) {
             Color myColor = bitmap[i][j];
             sf::Color bColor(int(myColor.r*255), int(myColor.g*255), int(myColor.b*255));
-            std::clog << "Setting (" << i << ", " << j << ") to color " << int(bColor.r) << ", " << int(bColor.g) << ", " << int(bColor.b) << std::endl;
+            //std::clog << "Setting (" << i << ", " << j << ") to color " << int(bColor.r) << ", " << int(bColor.g) << ", " << int(bColor.b) << std::endl;
             buffer.setPixel(i, j, bColor);
         }
     }
@@ -75,5 +77,5 @@ void Image::render() {
     window.clear(sf::Color(0, 0, 0));
     window.draw(bufferSprite);
     window.display();
-    std::cin.get();
+    std::cin.get();*/
 }

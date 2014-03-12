@@ -57,8 +57,8 @@ unsigned int Image::getHeight() {
 }
 
 void Image::render() {
-    Image* im = new Image(128,128);
-    PngExport test = PngExport(im);
+    //Image* im = new Image(128,128);
+    PngExport test = PngExport(this);
     test.exportToFile("output.png");
     /*sf::Image buffer;
     buffer.create(width, height, sf::Color(0, 0, 0));

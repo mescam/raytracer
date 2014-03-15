@@ -9,8 +9,8 @@ public:
     Vector3 center;
     double radius;
 
-    Sphere(Vector3 center, double radius, Color c);
-    bool testHit(Ray ray, double &distance);
+    Sphere(Vector3 center, double radius, Material &m);
+    bool testHit(Ray ray, double &distance, Vector3 &normal);
 };
 
 #endif

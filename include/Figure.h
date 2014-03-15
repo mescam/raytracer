@@ -3,13 +3,13 @@
 
 #include "Color.h"
 #include "Ray.h"
+#include "Material.h"
 
 class Figure {
 public:
-	Color color;
-
-	Figure(Color c) : color(c) {};
-	virtual bool testHit(Ray ray, double &distance) = 0;
+    Material &material;	
+	Figure(Material &m) : material(m) {};
+	virtual bool testHit(Ray ray, double &distance, Vector3 &normal) = 0;
 };
 
 #endif

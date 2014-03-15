@@ -17,6 +17,8 @@ public:
 
 	}
 
+	Ray() {};
+
 	Vector3 getOrigin();
 	Vector3 getDirection();
 

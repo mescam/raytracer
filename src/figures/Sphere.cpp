@@ -1,11 +1,11 @@
 #include "cmath"
 #include "figures/Sphere.h"
 
-Sphere::Sphere(Vector3 c, double r, Color cl) : Figure(cl), center(c), radius(r) {
+Sphere::Sphere(Vector3 c, double r, Material &m) : Figure(m), center(c), radius(r) {
 
 }
 
-bool Sphere::testHit(Ray ray, double& distance) {
+bool Sphere::testHit(Ray ray, double& distance, Vector3 &normal) {
     double t, a, b, c, disc;
 
     Vector3 d = ray.origin - center;
@@ -27,5 +27,6 @@ bool Sphere::testHit(Ray ray, double& distance) {
         return false;
 
     distance = t;
+    normal = ((ray.getOrigin() + ray.getDirection() * t) - center).getNormalized();
     return true;
 }

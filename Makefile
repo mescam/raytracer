@@ -1,10 +1,16 @@
-SOURCES=${wildcard src/*.cpp wildcard src/figures/*.cpp}
+SOURCES=${wildcard src/*.cpp wildcard src/figures/*.cpp wildcard src/materials/*.cpp wildcard src/cameras/*.cpp}
 OBJECTS=$(SOURCES:src/%.cpp=obj/%.o)
-CFLAGS=-c -Wall -std=c++11 -Iinclude `libpng-config --cflags` 
-LDFLAGS=`libpng-config --ldflags` 
+CFLAGS=-c -Wall -std=c++11 -Iinclude `libpng-config --cflags` -g3
+LDFLAGS=`libpng-config --ldflags` -g3
 EXECUTABLE=bin/raytracer
 
-all: $(EXECUTABLE)
+all: prepare $(EXECUTABLE)
+
+prepare:
+	@mkdir -p obj
+	@mkdir -p obj/materials
+	@mkdir -p obj/figures
+	@mkdir -p obj/cameras
 
 clean:
 	rm -f $(EXECUTABLE)

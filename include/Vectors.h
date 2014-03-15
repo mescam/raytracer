@@ -12,6 +12,10 @@ public:
     Vector3(double x, double y, double z): x(x), y(y), z(z) {
     
     }
+
+    Vector3() : x(0), y(0), z(0) {
+        
+    }
     
     double getX();
     double getY();

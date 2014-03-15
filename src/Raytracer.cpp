@@ -25,6 +25,8 @@ Color Raytracer::shadeRay(Scene &scene, Ray &ray) {
     Material &m = info.hitObject->material;
 
     for(PointLight *light : scene.lights) {
+        if(scene.isObstacleBetween(info.hitPoint, light->position))
+            continue;
         finalColor = finalColor + m.radiance(*light, info); 
     }
 

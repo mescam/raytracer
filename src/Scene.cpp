@@ -39,3 +39,19 @@ HitInfo Scene::traceRay(Ray ray) {
 
     return result;
 }
+
+bool Scene::isObstacleBetween(Vector3 a, Vector3 b) {
+    Vector3 v = b - a;
+    double dist = v.length();
+    double curr = Ray::infinity;
+
+
+    Ray r(a, v);
+    Vector3 notused;
+
+    for(Figure *obj : objects) {
+        if(obj->testHit(r, curr, notused) && curr < dist)
+            return true;
+    }
+    return false;
+}

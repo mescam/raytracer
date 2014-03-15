@@ -5,6 +5,7 @@
 
 #include "Color.h"
 #include "HitInfo.h"
+#include "Vectors.h"
 
 class Figure;
 class PointLight;
@@ -26,6 +27,8 @@ public:
     void addObject(Figure* object);
     void addObject(PointLight* light);
     HitInfo traceRay(Ray ray);
+
+    bool isObstacleBetween(Vector3 a, Vector3 b);
 };
 
 #endif //_SCENE_H_

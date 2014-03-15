@@ -6,8 +6,8 @@
 #include "Scene.h"
 #include "Camera.h"
 #include "Raytracer.h"
-#include "OrthogonalCamera.h"
-#include "PinholeCamera.h"
+#include "cameras/OrthogonalCamera.h"
+#include "cameras/PinholeCamera.h"
 #include "figures/Sphere.h"
 #include "figures/Plane.h"
 

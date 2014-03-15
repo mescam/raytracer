@@ -1,4 +1,4 @@
-#include "PinholeCamera.h"
+#include "cameras/PinholeCamera.h"
 
 PinholeCamera::PinholeCamera(Vector3 origin, Vector3 lookAt, 
     Vector3 up, double distance) : onb(OrthonormalBasis(origin, lookAt, up)) {

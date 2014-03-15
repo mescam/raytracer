@@ -1,4 +1,4 @@
-#include "OrthogonalCamera.h"
+#include "cameras/OrthogonalCamera.h"
 
 Ray OrthogonalCamera::getRayTo(Vector2 location) {
     Vector3 direction = Vector3(sin(angle),0,cos(angle));

@@ -28,11 +28,13 @@ public:
     Vector3 operator!();
     Vector3 operator+(const Vector3 & v);
     Vector3 operator-(const Vector3 & v);
+    Vector3 operator-();
     Vector3 operator*(const double & val);
     Vector3 operator/(const double & val);
 
     static double dot(Vector3 a, Vector3 b);
     static Vector3 cross(Vector3 a, Vector3 b);
+    static Vector3 reflect(Vector3 v, Vector3 normal);
 
     double length();
     double lengthSq();

@@ -16,6 +16,7 @@ public:
     Color operator*(const float val);
     Color operator*(const Color b);
     Color operator/(const float val);
+
 };
 
 #endif

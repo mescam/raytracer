@@ -31,6 +31,9 @@ Vector3 Vector3::operator+(const Vector3 & v) {
 Vector3 Vector3::operator-(const Vector3 & v) {
     return Vector3(this->x-v.x, this->y-v.y, this->z-v.z);
 }
+Vector3 Vector3::operator-() {
+    return Vector3(-this->x, -this->y, -this->z);
+}
 Vector3 Vector3::operator*(const double & val) {
     return Vector3(this->x*val, this->y*val, this->z*val);
 }
@@ -45,6 +48,10 @@ double Vector3::dot(Vector3 a, Vector3 b) {
 
 Vector3 Vector3::cross(Vector3 a, Vector3 b) {
     return Vector3(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x);
+}
+
+Vector3 Vector3::reflect(Vector3 v, Vector3 normal) {
+    return normal * Vector3::dot(normal, v) * 2 - v;
 }
 
 double Vector3::length() {

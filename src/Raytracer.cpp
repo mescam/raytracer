@@ -9,26 +9,22 @@ Image* Raytracer::raytrace(Scene scene, Camera* camera, int w, int h) {
             Vector2 pictureCoordinates = Vector2((((x + 0.5)/(double)w) * 2 - 1),(((y + 0.5)/(double)h)* 2 - 1));
             Ray ray = camera->getRayTo(pictureCoordinates);
             
-            img->setPixel(x,y, shadeRay(scene, ray));
+            img->setPixel(x,y, shadeRay(scene, ray, 0));
         }
     }
     return img;
 }
 
-Color Raytracer::shadeRay(Scene &scene, Ray &ray) {
+Color Raytracer::shadeRay(Scene &scene, Ray &ray, int depth) {
+    if(depth > maxDepth)
+        return Color(0.0f, 0.0f, 0.0f);
+
     HitInfo info = scene.traceRay(ray);
     if(info.hitObject == nullptr) {
         return scene.getBackgroundColor();
     }
-
-    Color finalColor = Color(0.0f, 0.0f, 0.0f);
+    info.depth = depth + 1;
     Material &m = info.hitObject->material;
 
-    for(PointLight *light : scene.lights) {
-        if(scene.isObstacleBetween(info.hitPoint, light->position))
-            continue;
-        finalColor = finalColor + m.radiance(*light, info); 
-    }
-
-    return finalColor;
+    return m.shade(*this, info);
 }

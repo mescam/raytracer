@@ -8,10 +8,12 @@
 #include "Color.h"
 
 class Raytracer {
+private:
+    int maxDepth;
 public:
-    Raytracer() {}
+    Raytracer(int maxDepth = 5) : maxDepth(maxDepth) {}
     Image* raytrace(Scene scene, Camera* camera, int w, int h);
-    Color shadeRay(Scene &scene, Ray &ray);
+    Color shadeRay(Scene &scene, Ray &ray, int depth = 0);
 };
 
 #endif //_RAYTRACER_H_

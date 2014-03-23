@@ -7,7 +7,7 @@ public:
     Color materialColor;
     PerfectDiffuse(Color materialColor) : materialColor(materialColor) {
     }
-    Color radiance(PointLight &light, HitInfo &hit);
+    Color shade(Raytracer &tracer, HitInfo &hit);
 };
 
 #endif

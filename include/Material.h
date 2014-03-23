@@ -2,11 +2,11 @@
 #define _MATERIAL_H_
 
 #include "HitInfo.h"
-#include "PointLight.h"
+#include "Raytracer.h"
 
 class Material {
 public:
-    virtual Color radiance(PointLight &light, HitInfo &info) = 0;
+    virtual Color shade(Raytracer &tracer, HitInfo &info) = 0;
 };
 
 #endif

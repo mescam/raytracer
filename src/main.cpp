@@ -12,15 +12,16 @@
 #include "figures/Plane.h"
 #include "materials/PerfectDiffuse.h"
 #include "materials/Phong.h"
+#include "materials/Reflective.h"
 #include "PointLight.h"
 
 int main(int argc, char** argv) {
     //let the journey begin
     Scene sampleScene = Scene();
-    Phong red(Color(1.0f, 0.0f, 0.0f), 0.8, 1, 30),
-          green(Color(0.0f, 1.0f, 0.0f), 0.8, 1, 30),
-          blue(Color(0.0f, 0.0f, 1.0f), 0.8, 1, 30),
-          gray(Color(0.7f, 0.7f, 0.7f), 0.8, 1, 30);
+    Reflective red(Color(1.0f, 0.0f, 0.0f), 0.4, 1, 300, 0.3),
+          green(Color(0.0f, 1.0f, 0.0f), 0.4, 1, 300, 0.3),
+          blue(Color(0.0f, 0.0f, 1.0f), 0.4, 1, 300, 0.3),
+          gray(Color(0.7f, 0.7f, 0.7f), 0.4, 0, 0, 0);
 
     sampleScene.addObject(new Sphere(Vector3(-4,0,0),2, red));
     sampleScene.addObject(new Sphere(Vector3(4,0,0),2, green));

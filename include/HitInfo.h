@@ -15,6 +15,7 @@ public:
     Vector3 normal;
     Vector3 hitPoint;
     Ray ray;
+    int depth = 0;
 
 public:
     HitInfo() {

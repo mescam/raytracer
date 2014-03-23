@@ -1,21 +1,29 @@
 #include "materials/Phong.h"
+#include "PointLight.h"
 #include <cmath>
 
-Color Phong::radiance(PointLight &light, HitInfo &info) {
-    Vector3 direction = (light.position - info.hitPoint).getNormalized();
-    double diffFactor = Vector3::dot(direction, info.normal);
+Color Phong::shade(Raytracer &tracer, HitInfo &info) {
+    Color total = Color(0.0f, 0.0f, 0.0f);
+    for (PointLight *light : info.scene->lights) {
+        Vector3 inDir = (light->position - info.hitPoint).getNormalized();
+        double diffuseFactor = Vector3::dot(inDir, info.normal);
 
-    if(diffFactor < 0)
-        return Color(0.0f, 0.0f, 0.0f);
+        if (diffuseFactor < 0)
+            continue;
 
-    Color result = light.color * materialColor * diffFactor * diffuseCoeff;
+        if (info.scene->isObstacleBetween(info.hitPoint, light->position)) 
+            continue;
 
-    double pFac = phongFactor(direction, info.normal, -info.ray.getDirection());
-    if(pFac != 0) {
-        result = result + materialColor * specular * pFac;
+        Color result = light->color * materialColor * diffuseFactor * diffuseCoeff;
+
+        double phFac = phongFactor(inDir, info.normal, -info.ray.getDirection());
+        if (phFac != 0) {
+            result = result + materialColor * specular * phFac; 
+        }
+
+        total = total + result;
     }
-
-    return result;
+    return total;
 }
 
 double Phong::phongFactor(Vector3 direction, Vector3 normal, Vector3 cameraDir) {

@@ -1,0 +1,9 @@
+#ifndef _SETTINGS_H_
+#define _SETTINGS_H_
+
+#define OUTPUT_RESOLUTION_X 1600
+#define OUTPUT_RESOLUTION_Y 1600
+
+#define SSAA_SAMPLES 8
+
+#endif //_SETTINGS_H_

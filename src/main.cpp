@@ -14,6 +14,8 @@
 #include "materials/Phong.h"
 #include "materials/Reflective.h"
 #include "PointLight.h"
+#include "Settings.h"
+
 #include <ctime>
 
 int main(int argc, char** argv) {
@@ -35,8 +37,10 @@ int main(int argc, char** argv) {
 
     sampleScene.addObject(new PointLight(Vector3(0, 5, -5), Color(1.0f, 1.0f, 1.0f)));
 
+    printf("Rendering scene to image with resolution %dx%d and SSAA = %d. Please wait, it may take some time...\n",OUTPUT_RESOLUTION_X,OUTPUT_RESOLUTION_Y,SSAA_SAMPLES);
+
     Raytracer test;
-    Image* img = test.raytrace(sampleScene,camera,800,800);
+    Image* img = test.raytrace(sampleScene,camera,OUTPUT_RESOLUTION_X,OUTPUT_RESOLUTION_Y);
     img->render();
     clock_gettime(CLOCK_REALTIME, &end);
     printf("Image generated in %fs\n", (double) (end.tv_sec - begin.tv_sec)

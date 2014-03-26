@@ -14,8 +14,11 @@
 #include "materials/Phong.h"
 #include "materials/Reflective.h"
 #include "PointLight.h"
+#include <ctime>
 
 int main(int argc, char** argv) {
+    timespec begin, end;
+    clock_gettime(CLOCK_REALTIME, &begin);
     //let the journey begin
     Scene sampleScene = Scene();
     Reflective red(Color(1.0f, 0.0f, 0.0f), 0.4, 1, 300, 0.3),
@@ -35,5 +38,8 @@ int main(int argc, char** argv) {
     Raytracer test;
     Image* img = test.raytrace(sampleScene,camera,800,800);
     img->render();
+    clock_gettime(CLOCK_REALTIME, &end);
+    printf("Image generated in %fs\n", (double) (end.tv_sec - begin.tv_sec)
+    +1.e-9*(end.tv_nsec - begin.tv_nsec));
     return 0;
 }

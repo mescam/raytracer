@@ -89,7 +89,9 @@ Image* Raytracer::raytrace(Scene scene, Camera* camera, int w, int h) {
     if (SSAA_SAMPLES > 1) {
         int ss_w = w*SSAA_SAMPLES;
         int ss_h = h*SSAA_SAMPLES;
+        #pragma omp parallel for
         for (int x = 0; x < w; x++) {
+            #pragma omp parallel for
             for (int y = 0; y < h; y++) {
                 Color finalColor = Color(0.0f,0.0f,0.0f,0.0f);
                 for (int i = 0; i < SSAA_SAMPLES; i++) {

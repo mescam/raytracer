@@ -13,7 +13,7 @@ void Scene::addObject(Figure* object) {
     this->objects.push_back(object);
 }
 
-void Scene::addObject(PointLight* light) {
+void Scene::addObject(Light* light) {
     this->lights.push_back(light);
 }
 

@@ -1,15 +1,18 @@
 #include "materials/PerfectDiffuse.h"
-#include "PointLight.h"
+#include "Light.h"
 
 Color PerfectDiffuse::shade(Raytracer &tracer, HitInfo &hit) {
-    Color total = Color(0.0f, 0.0f, 0.0f);
-    for (PointLight* light : hit.scene->lights) {
-        Vector3 inDir = (light->position - hit.hitPoint).getNormalized();
+    Color total = Color(0.1f, 0.1f, 0.1f);
+    for (Light* light : hit.scene->lights) {
+        Vector3 lightPos = light->sample();
+        Vector3 inDir = (lightPos - hit.hitPoint).getNormalized();
         double diffuseFactor = Vector3::dot(inDir, hit.normal);
+
         if (diffuseFactor < 0)
             continue;
-        if(hit.scene->isObstacleBetween(hit.hitPoint, light->position))
+        if (hit.scene->isObstacleBetween(hit.hitPoint, lightPos))
             continue;
+
 
         total = total + light->color * materialColor * diffuseFactor;
     }

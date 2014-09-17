@@ -101,7 +101,7 @@ Image* Raytracer::raytrace(Scene scene, Camera* camera, int w, int h) {
                         Vector2 pictureCoordinates = Vector2(((((x*SSAA_SAMPLES) + i + 0.5)/(double)ss_w) * 2 - 1),((((y*SSAA_SAMPLES) + j + 0.5)/(double)ss_h)* 2 - 1));
                         Ray ray = camera->getRayTo(pictureCoordinates);
                         sampleColor = this->shadeRay(scene, ray, 0);
-                        
+                        //printf("%d %d -> %f %f %f\n", x, y, sampleColor.r, sampleColor.g, sampleColor.b);
                         finalColor.r += sampleColor.r;
                         finalColor.g += sampleColor.g;
                         finalColor.b += sampleColor.b;
@@ -112,10 +112,11 @@ Image* Raytracer::raytrace(Scene scene, Camera* camera, int w, int h) {
                 finalColor.g /= pow(SSAA_SAMPLES,2.0);
                 finalColor.b /= pow(SSAA_SAMPLES,2.0);
                 finalColor.a /= pow(SSAA_SAMPLES,2.0);
+
                 img->setPixel(x,y,finalColor);
             }
         }
-    } 
+    }
     else {
         for(int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {

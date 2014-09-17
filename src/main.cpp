@@ -34,10 +34,9 @@ int main(int argc, char** argv) {
     sampleScene.addObject(new Sphere(Vector3(0,0,3),2, blue));
     sampleScene.addObject(new Plane(Vector3(0, 0, 4), Vector3(0, 0, -1), gray));
 
-    Camera* camera = new PinholeCamera(Vector3(0, 1,-8),Vector3(0,0,0),Vector3(0,-1, 1),1.0);
+    Camera* camera = new PinholeCamera(Vector3(0, 1,-8), Vector3(0,0,0), Vector3(0,-1, 1), 1.0);
 
     sampleScene.addObject(new Light(Vector3(0, 5, -5), 1.0, Color(1.0f, 1.0f, 1.0f)));
-    // sampleScene.addObject(new Light(Vector3(0, -5, -5), 0, Color(1.0f, 1.0f, 1.0f)));
 
     printf("Rendering scene to image with resolution %dx%d and SSAA = %d. Please wait, it may take some time...\n",OUTPUT_RESOLUTION_X,OUTPUT_RESOLUTION_Y,SSAA_SAMPLES);
 

@@ -4,6 +4,6 @@
 #define OUTPUT_RESOLUTION_X 800
 #define OUTPUT_RESOLUTION_Y 800
 
-#define SSAA_SAMPLES 16
+#define SSAA_SAMPLES 4
 
 #endif //_SETTINGS_H_

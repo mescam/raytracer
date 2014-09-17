@@ -24,10 +24,10 @@ int main(int argc, char** argv) {
     clock_gettime(CLOCK_REALTIME, &begin);
     //let the journey begin
     Scene sampleScene = Scene();
-    Reflective red(Color(1.0f, 0.0f, 0.0f), 0.4, 1, 300, 0.3),
-          green(Color(0.0f, 1.0f, 0.0f), 0.4, 1, 300, 0.3),
-          blue(Color(0.0f, 0.0f, 1.0f), 0.4, 1, 300, 0.3),
-          gray(Color(0.7f, 0.7f, 0.7f), 0.4, 0, 0, 0.0);
+    Reflective red(Color(1.0f, 0.0f, 0.0f), 0, 0.4, 1, 300, 0.3),
+          green(Color(0.0f, 1.0f, 0.0f), 0, 0.4, 1, 300, 0.3),
+          blue(Color(0.0f, 0.0f, 1.0f), 0, 0.4, 1, 300, 0.3),
+          gray(Color(0.7f, 0.7f, 0.7f), 0, 0.4, 0, 0, 0.0);
 
     sampleScene.addObject(new Sphere(Vector3(-4,0,0),2, red));
     sampleScene.addObject(new Sphere(Vector3(4,0,0),2, green));
@@ -37,6 +37,7 @@ int main(int argc, char** argv) {
     Camera* camera = new PinholeCamera(Vector3(0, 1,-8), Vector3(0,0,0), Vector3(0,-1, 1), 1.0);
 
     sampleScene.addObject(new Light(Vector3(0, 5, -5), 1.0, Color(1.0f, 1.0f, 1.0f)));
+    sampleScene.addObject(new Light(Vector3(0, -5, -5), 1.0, Color(1.0f, 1.0f, 1.0f)));
 
     printf("Rendering scene to image with resolution %dx%d and SSAA = %d. Please wait, it may take some time...\n",OUTPUT_RESOLUTION_X,OUTPUT_RESOLUTION_Y,SSAA_SAMPLES);
 

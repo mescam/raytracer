@@ -7,11 +7,12 @@
 class Phong : public Material {
 public:
     Color materialColor;
+    double ambient;
     double diffuseCoeff;
     double specular;
     double specularExp;
 
-    Phong(Color color, double diffuse, double spec, double specExp) : materialColor(color), diffuseCoeff(diffuse), specular(spec), specularExp(specExp) {
+    Phong(Color color, double ambient, double diffuse, double spec, double specExp) : materialColor(color), ambient(ambient), diffuseCoeff(diffuse), specular(spec), specularExp(specExp) {
     }
 
     Color shade(Raytracer &tracer, HitInfo &info);

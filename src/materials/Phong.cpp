@@ -3,7 +3,7 @@
 #include <cmath>
 
 Color Phong::shade(Raytracer &tracer, HitInfo &info) {
-    Color total = Color(0.0f, 0.0f, 0.0f);
+    Color total = Color(1.0f, 0.0f, 0.0f) * ambient;
     for (Light *light : info.scene->lights) {
         Vector3 lightPos = light->sample();
         Vector3 inDir = (lightPos - info.hitPoint).getNormalized();

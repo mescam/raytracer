@@ -28,7 +28,8 @@ int main(int argc, char** argv) {
     Reflective red(Color(1.0f, 0.0f, 0.0f), 0, 0.4, 1, 300, 0.3),
           green(Color(0.0f, 1.0f, 0.0f), 0, 0.4, 1, 300, 0.3),
           blue(Color(0.0f, 0.0f, 1.0f), 0, 0.4, 1, 300, 0.3),
-          gray(Color(0.7f, 0.7f, 0.7f), 0, 0.4, 0, 0, 0.0);
+          gray(Color(0.7f, 0.7f, 0.7f), 0, 0.4, 0, 0, 0.0),
+          white(Color(1.0f, 1.0f, 1.0f), 0, 0.4, 0, 300, 1);
 
     Transparent whiteT(Color(1.0f, 1.0f, 1.0f), 0, 0.1, 0, 0, 0.3, 1.05, 0.9);
 
@@ -46,9 +47,11 @@ int main(int argc, char** argv) {
     printf("Rendering scene to image with resolution %dx%d and SSAA = %d. Please wait, it may take some time...\n",OUTPUT_RESOLUTION_X,OUTPUT_RESOLUTION_Y,SSAA_SAMPLES);
 
     Raytracer test;
-    Image* img = test.raytrace(sampleScene,camera,OUTPUT_RESOLUTION_X,OUTPUT_RESOLUTION_Y);
+    Image* img = test.raytrace(sampleScene, camera,
+    	                       OUTPUT_RESOLUTION_X, OUTPUT_RESOLUTION_Y);
     img->render();
     clock_gettime(CLOCK_REALTIME, &end);
+
     printf("Image generated in %fs\n", (double) (end.tv_sec - begin.tv_sec)
     +1.e-9*(end.tv_nsec - begin.tv_nsec));
     return 0;
